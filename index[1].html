@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שמות לתפילה ולברכה באוהל הרבי</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f3ec;color:#242424;font-family:Arial,"Noto Sans Hebrew",sans-serif}
+.wrap{max-width:620px;margin:auto;padding:24px 16px 45px}
+.card{background:#fff;border-radius:24px;padding:28px 22px;box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.top{text-align:center}
+.symbol{font-size:34px;margin-bottom:8px}
+h1{font-size:30px;line-height:1.2;margin:0 0 10px}
+.lead{font-size:17px;line-height:1.65;color:#555;margin:0 auto 22px;max-width:500px}
+.note{background:#f5eee2;border-radius:16px;padding:14px 16px;margin:0 0 20px;line-height:1.55}
+label{display:block;font-weight:700;margin:16px 0 7px}
+input,textarea{width:100%;border:1px solid #ddd;border-radius:12px;padding:13px 14px;font-size:17px;font-family:inherit;background:#fff}
+textarea{min-height:105px;resize:vertical}
+button{width:100%;border:0;border-radius:14px;padding:15px;font-size:18px;font-weight:700;cursor:pointer;background:#242424;color:#fff;margin-top:20px}
+button:disabled{opacity:.6;cursor:wait}
+.success{display:none;text-align:center;padding:18px 8px}
+.success h2{margin:0 0 10px}
+.small{font-size:13px;color:#777;line-height:1.5;margin-top:18px;text-align:center}
+.footer{text-align:center;margin-top:18px;color:#666;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div id="formView">
+      <div class="top">
+        <div class="symbol">🕊️</div>
+        <h1>שמות לתפילה ולברכה<br>באוהל הרבי</h1>
+        <p class="lead">
+          לקראת יום כיפור אני רוצה להזכיר באוהל הרבי אתכם ואת יקיריכם
+          לתפילה ולברכה.
+        </p>
+      </div>
+
+      <div class="note">
+        🙏 אפשר להשאיר שם ושם האם, ואם תרצו גם בקשה אישית לתפילה.<br>
+        <b>השמות יישלחו בדיסקרטיות לקראת יום כיפור.</b>
+      </div>
+
+      <iframe name="submitFrame" id="submitFrame" style="display:none"></iframe>
+      <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbwmeTJqQSezerPNzJ0jceIUKh5jDO8NsHeoTd6LAYWdSf2SIjzmqlXW-Eww4QAr2pSa-g/exec" method="POST" target="submitFrame">
+        <label for="name">שם</label>
+        <input id="name" name="name" required placeholder="שם פרטי ומשפחה">
+
+        <label for="mother">שם האם</label>
+        <input id="mother" name="mother" required placeholder="שם פרטי של האם">
+
+        <label for="request">בקשה לתפילה <span style="font-weight:400">(לא חובה)</span></label>
+        <textarea id="request" name="request" placeholder="אפשר לכתוב כאן בקשה אישית..."></textarea>
+
+        <button id="submitBtn" type="submit">שליחת השם לתפילה</button>
+      </form>
+
+      <div class="small">🔒 הפרטים נשלחים בדיסקרטיות ומשמשים לצורך התפילה בלבד.</div>
+    </div>
+
+    <div class="success" id="successView">
+      <div class="symbol">🙏</div>
+      <h2>השמות התקבלו בהצלחה</h2>
+      <p>בעזרת ה', השם יועבר לתפילה באוהל הרבי לקראת יום כיפור.</p>
+      <p><b>שנזכה לבשורות טובות, לישועות ולשנה טובה ומתוקה ❤️</b></p>
+      <button type="button" onclick="location.reload()">שליחת שם נוסף</button>
+    </div>
+  </div>
+  <div class="footer">הרב שלמה בטקין · בית חב"ד קריית היובל</div>
+</div>
+
+<script>
+document.getElementById("prayerForm").addEventListener("submit", ()=>{
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.textContent = "שולח...";
+  setTimeout(()=>{
+    document.getElementById("formView").style.display="none";
+    document.getElementById("successView").style.display="block";
+  }, 900);
+});
+</script>
+</body>
+</html>
